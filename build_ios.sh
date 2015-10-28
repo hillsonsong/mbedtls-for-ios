@@ -29,7 +29,7 @@ SDKVERSION=`xcrun -sdk iphoneos --show-sdk-version`
 #
 # Don't change anything here
 CURRENTPATH=`pwd`
-ARCHS="i386 armv7 arm64"
+ARCHS="i386 x86_64 armv7 armv7s arm64"
 DEVELOPER=`xcode-select -print-path`
 
 ##########
@@ -47,7 +47,7 @@ mkdir -p src
 
 for ARCH in ${ARCHS}
 do
-	if [[ "${ARCH}" == "i386" ]];
+	if [[ "${ARCH}" == "i386" || "${ARCH}" == "x86_64" ]];
 	then
 		PLATFORM="iPhoneSimulator"
 	else
@@ -89,8 +89,7 @@ do
 	rm -rf src/mbedtls-${VERSION}
 
 done
-lipo -create ${CURRENTPATH}"/bin/libmbedtls-i386.a" ${CURRENTPATH}"/bin/libmbedtls-armv7.a" ${CURRENTPATH}"/bin/libmbedtls-arm64.a" -output ${CURRENTPATH}"/lib/libmbedtls.a"
-
+lipo -create ${CURRENTPATH}"/bin/libmbedtls-i386.a" ${CURRENTPATH}"/bin/libmbedtls-x86_64.a" ${CURRENTPATH}"/bin/libmbedtls-armv7.a" ${CURRENTPATH}"/bin/libmbedtls-armv7s.a" ${CURRENTPATH}"/bin/libmbedtls-arm64.a" -output ${CURRENTPATH}"/lib/libmbedtls.a"
 echo "Build library..."
 
 
