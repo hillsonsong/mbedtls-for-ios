@@ -83,13 +83,19 @@ do
 	make
 
 	cp libmbedtls.a ${CURRENTPATH}/bin/libmbedtls-${ARCH}.a
+	cp libmbedx509.a ${CURRENTPATH}/bin/libmbedx509-${ARCH}.a
+	cp libmbedcrypto.a ${CURRENTPATH}/bin/libmbedcrypto-${ARCH}.a
+
 	cp -R ${CURRENTPATH}/src/mbedtls-${VERSION}/include ${CURRENTPATH}
 	cp ${CURRENTPATH}/src/mbedtls-${VERSION}/LICENSE ${CURRENTPATH}/include/mbedtls/LICENSE
 	cd ${CURRENTPATH}
 	rm -rf src/mbedtls-${VERSION}
 
 done
+rm -rf "${CURRENTPATH}"/lib/*
 lipo -create ${CURRENTPATH}"/bin/libmbedtls-i386.a" ${CURRENTPATH}"/bin/libmbedtls-x86_64.a" ${CURRENTPATH}"/bin/libmbedtls-armv7.a" ${CURRENTPATH}"/bin/libmbedtls-armv7s.a" ${CURRENTPATH}"/bin/libmbedtls-arm64.a" -output ${CURRENTPATH}"/lib/libmbedtls.a"
+lipo -create ${CURRENTPATH}"/bin/libmbedx509-i386.a" ${CURRENTPATH}"/bin/libmbedx509-x86_64.a" ${CURRENTPATH}"/bin/libmbedx509-armv7.a" ${CURRENTPATH}"/bin/libmbedx509-armv7s.a" ${CURRENTPATH}"/bin/libmbedx509-arm64.a" -output ${CURRENTPATH}"/lib/libmbedx509.a"
+lipo -create ${CURRENTPATH}"/bin/libmbedcrypto-i386.a" ${CURRENTPATH}"/bin/libmbedcrypto-x86_64.a" ${CURRENTPATH}"/bin/libmbedcrypto-armv7.a" ${CURRENTPATH}"/bin/libmbedcrypto-armv7s.a" ${CURRENTPATH}"/bin/libmbedcrypto-arm64.a" -output ${CURRENTPATH}"/lib/libmbedcrypto.a"
 echo "Build library..."
 
 
