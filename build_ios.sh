@@ -22,7 +22,7 @@
 ###########################################################################
 #  Change values here
 #
-VERSION="2.1.2"
+VERSION="2.7.0"
 SDKVERSION=`xcrun -sdk iphoneos --show-sdk-version`
 #
 ###########################################################################
@@ -36,7 +36,7 @@ DEVELOPER=`xcode-select -print-path`
 set -e
 if [ ! -e mbedtls-${VERSION}-apache.tgz ]; then
 	echo "Downloading mbedtls-${VERSION}-apache.tgz"
-	curl -O https://tls.mbed.org/download/mbedtls-${VERSION}-apache.tgz
+	curl -O https://tls.mbed.org/download/start/mbedtls-${VERSION}-apache.tgz
 else
 	echo "Using mbedtls-${VERSION}-apache.tgz"
 fi
