@@ -11,3 +11,7 @@ xcuserdata
 *.swp
 .pyc
 
+*.a
+include/
+mbedtls-demo/mbedtls-demo.xcodeproj/project.xcworkspace/
+mbedtls-demo/mbedtls-demo.xcodeproj/xcuserdata/
